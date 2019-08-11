@@ -29,7 +29,7 @@ class GenericEncoder(json.JSONEncoder):
             return json.JSONEncoder.default(self, obj) 
 
 
-led = LED(18)
+'''led = LED(18)
 
 def ledOn():
   led.on()
@@ -44,7 +44,7 @@ def ledStatus():
      return 'On'
   else:
     return 'Off'
-
+'''
 
 def data_to_json(data):
     json_data = json.dumps(data,cls=GenericEncoder)
