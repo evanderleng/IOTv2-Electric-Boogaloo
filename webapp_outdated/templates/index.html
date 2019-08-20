@@ -275,6 +275,54 @@ window.onload = function() {
 }
 </script>
 
+
+<script>
+document.onkeydown = function(e) {
+    switch (e.keyCode) {
+        case 37:
+            moveL();
+            break;
+        case 38:
+            moveU();
+            break;
+        case 39:
+            moveR();
+            break;
+        case 40:
+            moveD();
+            break;
+    }
+};
+
+
+function moveL(){
+	$.ajax({url: "moveL",
+	success: function(result){
+	}
+
+})
+function moveR(){
+	$.ajax({url: "moveR",
+	success: function(result){
+	}
+
+})
+function moveU(){
+	$.ajax({url: "moveU",
+	success: function(result){
+	}
+
+})
+function moveD(){
+	$.ajax({url: "moveD",
+	success: function(result){
+	}
+
+})
+
+</script>
+
+
   <!--   Core JS Files   -->
   <script src="../static/js/core/jquery.min.js"></script>
   <script src="../static/js/core/popper.min.js"></script>

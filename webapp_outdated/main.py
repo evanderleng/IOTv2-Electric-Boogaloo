@@ -1,5 +1,6 @@
 from flask import Flask, render_template, jsonify, request,Response
 
+from google.cloud import pubsub_v1
 import mysql.connector
 import sys
 
@@ -109,21 +110,51 @@ def apidata_getdata():
             print(sys.exc_info()[1])
 
 
-'''@app.route("/toggle")
-def writePin():
-	if led.is_lit:
-		response = ledOff()
-	else:
-		response = ledOn()
+@app.route("/moveL")
+def moveL():
+    publisher = pubsub_v1.PublisherClient()
+    topic_path = publisher.topic_path("gungnir-249212", "move")
+    print(topic_path)
+    data = u'left'
+    data = data.encode('utf-8')
+    future = publisher.publish(topic_path, data=data)
+    print(future.result())
+    print('Published messages.')
 
-	templateData = {
-		'title' : 'Status of LED',
-		'response' : response
-	}
-'''
-	return render_template('pin.html', **templateData)'''
+@app.route("/moveR")
+def moveL():
+    publisher = pubsub_v1.PublisherClient()
+    topic_path = publisher.topic_path("gungnir-249212", "move")
+    print(topic_path)
+    data = u'right'
+    data = data.encode('utf-8')
+    future = publisher.publish(topic_path, data=data)
+    print(future.result())
+    print('Published messages.')
+
+@app.route("/moveU")
+def moveL():
+    publisher = pubsub_v1.PublisherClient()
+    topic_path = publisher.topic_path("gungnir-249212", "move")
+    print(topic_path)
+    data = u'up'
+    data = data.encode('utf-8')
+    future = publisher.publish(topic_path, data=data)
+    print(future.result())
+    print('Published messages.')
 
 
+@app.route("/moveD")
+def moveL():
+    publisher = pubsub_v1.PublisherClient()
+    topic_path = publisher.topic_path("gungnir-249212", "move")
+    print(topic_path)
+    data = u'down'
+    data = data.encode('utf-8')
+    future = publisher.publish(topic_path, data=data)
+    print(future.result())
+    print('Published messages.')
+    
 @app.route("/")
 def chartsimple():
     return render_template('index.html')
