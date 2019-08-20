@@ -66,6 +66,7 @@ def connect_to_mysql(host,user,password,database):
         return None
 
 def fetch_fromdb_as_json(cnx,cursor,sql):
+    
     try:
         cursor.execute(sql)
         row_headers=[x[0] for x in cursor.description] 
@@ -95,11 +96,7 @@ def apidata_getdata():
         try:
             host='gungnir-249212:us-central1:iotsql'; user='root'; password='1qwer$#@!'; database='testdatabase';
             sql="SELECT * FROM person ORDER BY datetime_value DESC LIMIT 10"
-            
-				cnx = mysql.connector.connect(user=user,password=password,host=host,database=database) 
-				cursor = cnx.cursor()
-				
-            #cnx,cursor = connect_to_mysql(host,user,password,database)
+            cnx,cursor = connect_to_mysql(host,user,password,database)
             json_data = fetch_fromdb_as_json(cnx,cursor,sql)
             loaded_r = json.loads(json_data)
             data = {'chart_data': loaded_r, 'title': "IOT Data"}
@@ -120,7 +117,7 @@ def writePin():
 		'title' : 'Status of LED',
 		'response' : response
 	}
-'''
+
 	return render_template('pin.html', **templateData)'''
 
 
