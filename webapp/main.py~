@@ -11,7 +11,7 @@ import decimal
 import gevent
 import gevent.monkey
 from gevent.pywsgi import WSGIServer
-#from gpiozero import LED
+from gpiozero import LED
 
 gevent.monkey.patch_all()
 
@@ -106,7 +106,7 @@ def apidata_getdata():
             print(sys.exc_info()[1])
 
 
-'''@app.route("/toggle")
+@app.route("/toggle")
 def writePin():
 	if led.is_lit:
 		response = ledOff()
@@ -118,7 +118,7 @@ def writePin():
 		'response' : response
 	}
 
-	return render_template('pin.html', **templateData)'''
+	return render_template('pin.html', **templateData)
 
 
 @app.route("/")

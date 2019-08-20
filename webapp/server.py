@@ -11,7 +11,7 @@ import decimal
 import gevent
 import gevent.monkey
 from gevent.pywsgi import WSGIServer
-#from gpiozero import LED
+from gpiozero import LED
 
 gevent.monkey.patch_all()
 
@@ -94,7 +94,7 @@ app = Flask(__name__)
 def apidata_getdata():
     if request.method == 'POST':
         try:
-            host='gungnir-249212:us-central1:iotsql'; user='root'; password='1qwer$#@!'; database='testdatabase';
+            host='localhost'; user='assignmentuser'; password='dmitiot'; database='assignmentdatabase';
             sql="SELECT * FROM person ORDER BY datetime_value DESC LIMIT 10"
             cnx,cursor = connect_to_mysql(host,user,password,database)
             json_data = fetch_fromdb_as_json(cnx,cursor,sql)
@@ -106,7 +106,7 @@ def apidata_getdata():
             print(sys.exc_info()[1])
 
 
-'''@app.route("/toggle")
+@app.route("/toggle")
 def writePin():
 	if led.is_lit:
 		response = ledOff()
@@ -118,7 +118,7 @@ def writePin():
 		'response' : response
 	}
 
-	return render_template('pin.html', **templateData)'''
+	return render_template('pin.html', **templateData)
 
 
 @app.route("/")
