@@ -94,7 +94,7 @@ app = Flask(__name__)
 def apidata_getdata():
     if request.method == 'POST':
         try:
-            host='gungnir-249212:us-central1:iotsql'; user='root'; password='1qwer$#@!'; database='testdatabase';
+            host='127.0.0.1'; user='root'; password='dmitiot'; database='test';
             sql="SELECT * FROM person ORDER BY datetime_value DESC LIMIT 10"
             
 				cnx = mysql.connector.connect(user=user,password=password,host=host,database=database) 
