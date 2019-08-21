@@ -17,5 +17,5 @@ while True:
 #		GPIO.output(18,GPIO.HIGH)
 #	else:
 #		GPIO.output(18,GPIO.LOW)
-	sleep(3)
+	sleep(9)
 
