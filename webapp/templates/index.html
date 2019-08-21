@@ -187,13 +187,13 @@
         function createDataTable(newdata){
             graphdata = new google.visualization.DataTable();       
             graphdata.addColumn('string', 'Time');
-            graphdata.addColumn('number', 'Number of People');
+            graphdata.addColumn('number', 'Light Value');
             for (i in newdata) {
                 datetime = newdata[i].datetime_value;
                 jsdatetime = new Date(Date.parse(datetime));
                 jstime = jsdatetime.toLocaleTimeString();
-                person = newdata[i].number_of_people;
-                graphdata.addRows([[jstime,person]]);
+                light = newdata[i].light;
+                graphdata.addRows([[jstime,light]]);
             }//end for
             return graphdata
         }
