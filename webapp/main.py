@@ -1,6 +1,6 @@
 from flask import Flask, render_template, jsonify, request,Response
 
-from google.cloud import pubsub_v1
+#from google.cloud import pubsub_v1
 import mysql.connector
 import sys
 
@@ -8,18 +8,25 @@ import json
 import numpy
 import datetime
 import decimal
-
+import os
 import gevent
 import gevent.monkey
 from gevent.pywsgi import WSGIServer
 #from gpiozero import LED
 
+CLOUDSQL_CONNECTION_NAME = 'gungnir-249212:us-central1:iotsql'
+CLOUDSQL_USER = 'root'
+CLOUDSQL_PASSWORD = '1qwer$#@!'
+cloudsql_unix_socket = os.path.join('/cloudsql', str(CLOUDSQL_CONNECTION_NAME))
+db = 'testdatabase'
+cnx = mysql.connector.connect(user=CLOUDSQL_USER, password=CLOUDSQL_PASSWORD, unix_socket=cloudsql_unix_socket, database=db)
+print('Connected to Google Cloud SQL (Unix Socket)')
+
 gevent.monkey.patch_all()
 
 
 class GenericEncoder(json.JSONEncoder):
-    
-    def default(self, obj):  
+    def default(self, obj):
         if isinstance(obj, numpy.generic):
             return numpy.asscalar(obj) 
         elif isinstance(obj, datetime.datetime):  
@@ -51,21 +58,6 @@ def data_to_json(data):
     json_data = json.dumps(data,cls=GenericEncoder)
     return json_data
 
-def connect_to_mysql(host,user,password,database):
-    try:
-        evanders_webapp_branch
-        cnx = mysql.connector.connect(host=host,user=user,password=password,database=database)
-
-        cursor = cnx.cursor()
-        print("Successfully connected to database!")
-
-        return cnx,cursor
-
-    except:
-        print(sys.exc_info()[0])
-        print(sys.exc_info()[1])
-
-        return None
 
 def fetch_fromdb_as_json(cnx,cursor,sql):
     try:
@@ -86,27 +78,18 @@ def fetch_fromdb_as_json(cnx,cursor,sql):
         print(sys.exc_info()[0])
         print(sys.exc_info()[1])
         return None
-      
-                      
+
 
 app = Flask(__name__)
 
 @app.route("/api/getdata",methods = ['POST', 'GET'])
 def apidata_getdata():
+    global conn
     if request.method == 'POST':
         try:
-            CLOUDSQL_CONNECTION_NAME = 'gungnir-249212:us-central1:iotsql'
-            CLOUDSQL_USER = 'root'
-            CLOUDSQL_PASSWORD = '1qwer$#@!'
-            cloudsql_unix_socket = os.path.join('/cloudsql', str(CLOUDSQL_CONNECTION_NAME))
-            db = 'testdatabase'
-            cnx = mysql.connector.connect(user=CLOUDSQL_USER, password=CLOUDSQL_PASSWORD, unix_socket=cloudsql_unix_socket, database=db)
-            print('Connected to Google Cloud SQL (Unix Socket)')
-
-            cursor = cnx.cursor()
             sql="SELECT * FROM person ORDER BY datetime_value DESC LIMIT 10"
-            #cnx,cursor = connect_to_mysql(host,user,password,database)
-            json_data = fetch_fromdb_as_json(cnx,cursor,sql)
+            cur = cnx.cursor()
+            json_data = fetch_fromdb_as_json(cnx,cur,sql)
             loaded_r = json.loads(json_data)
             data = {'chart_data': loaded_r, 'title': "IOT Data"}
             return jsonify(data)
