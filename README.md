@@ -1,13 +1,13 @@
 Section 1\
-Overview of project {#section-1-overview-of-project .ListParagraph}
+Overview of project 
 ===================
 
-Where we have uploaded our tutorial {#where-we-have-uploaded-our-tutorial .Header2dora1}
+Where we have uploaded our tutorial 
 -----------------------------------
 
 Paste the link here of your Youtube and tutorial document here
 
-What is the application about? {#what-is-the-application-about .Header2dora1}
+What is the application about? 
 ------------------------------
 
 Our project, takes images using the camera every predefined seconds,
