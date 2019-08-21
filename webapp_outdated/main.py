@@ -53,7 +53,7 @@ def data_to_json(data):
 
 def connect_to_mysql(host,user,password,database):
     try:
-        cnx = mysql.connector.connect(host=host,user=user,password=password,database=database)
+        cnx = mysql.connector.connect(host,user=user,password=password,database=database)
 
         cursor = cnx.cursor()
         print("Successfully connected to database!")
@@ -94,11 +94,11 @@ app = Flask(__name__)
 def apidata_getdata():
     if request.method == 'POST':
         try:
-            host='gungnir-249212:us-central1:iotsql'; user='root'; password='1qwer$#@!'; database='testdatabase';
+            host="gungnir-249212:us-central1:iotsql"; user="root"; password="1qwer$#@!"; database="testdatabase";
             sql="SELECT * FROM person ORDER BY datetime_value DESC LIMIT 10"
             
-				cnx = mysql.connector.connect(user=user,password=password,host=host,database=database) 
-				cursor = cnx.cursor()
+            cnx = mysql.connector.connect(user=user,password=password,host=host,database=database) 
+            cursor = cnx.cursor()
 				
             #cnx,cursor = connect_to_mysql(host,user,password,database)
             json_data = fetch_fromdb_as_json(cnx,cursor,sql)
@@ -109,7 +109,7 @@ def apidata_getdata():
             print(sys.exc_info()[0])
             print(sys.exc_info()[1])
 
-
+'''
 @app.route("/moveL")
 def moveL():
     publisher = pubsub_v1.PublisherClient()
@@ -122,7 +122,7 @@ def moveL():
     print('Published messages.')
 
 @app.route("/moveR")
-def moveL():
+def moveR():
     publisher = pubsub_v1.PublisherClient()
     topic_path = publisher.topic_path("gungnir-249212", "move")
     print(topic_path)
@@ -133,7 +133,7 @@ def moveL():
     print('Published messages.')
 
 @app.route("/moveU")
-def moveL():
+def moveU():
     publisher = pubsub_v1.PublisherClient()
     topic_path = publisher.topic_path("gungnir-249212", "move")
     print(topic_path)
@@ -145,7 +145,7 @@ def moveL():
 
 
 @app.route("/moveD")
-def moveL():
+def moveD():
     publisher = pubsub_v1.PublisherClient()
     topic_path = publisher.topic_path("gungnir-249212", "move")
     print(topic_path)
@@ -154,7 +154,7 @@ def moveL():
     future = publisher.publish(topic_path, data=data)
     print(future.result())
     print('Published messages.')
-    
+   ''' 
 @app.route("/")
 def chartsimple():
     return render_template('index.html')
