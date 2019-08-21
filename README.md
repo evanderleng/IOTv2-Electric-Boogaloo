@@ -25,17 +25,18 @@ To implement MySQL database, the MySQL libraries need to be installed. If you ar
 sudo pip install mysql-connector-python
 sudo pip install mysql-connector
 ```
+Finally, install the pubsub libararies needed to send mqtt data
 
-
-## Usage
-
-```python
-import foobar
-
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
+```bash
+sudo pip install google-cloud-pubsub
 ```
+
+## Hardware
+- 1x Raspberry pi
+- 1x Raspberry pi camera
+- 1x Breadboard
+- 2x SG90 servo
+- 2x AA battery packs
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
