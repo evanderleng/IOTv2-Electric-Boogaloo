@@ -53,7 +53,8 @@ def data_to_json(data):
 
 def connect_to_mysql(host,user,password,database):
     try:
-        cnx = mysql.connector.connect(host,user=user,password=password,database=database)
+        evanders_webapp_branch
+        cnx = mysql.connector.connect(host=host,user=user,password=password,database=database)
 
         cursor = cnx.cursor()
         print("Successfully connected to database!")
@@ -94,7 +95,9 @@ app = Flask(__name__)
 def apidata_getdata():
     if request.method == 'POST':
         try:
-            host="gungnir-249212:us-central1:iotsql"; user="root"; password="1qwer$#@!"; database="testdatabase";
+
+            host='gungnir-249212:us-central1:iotsql'; user='root'; password='1qwer$#@!'; database='testdatabase';
+
             sql="SELECT * FROM person ORDER BY datetime_value DESC LIMIT 10"
             
             cnx = mysql.connector.connect(user=user,password=password,host=host,database=database) 
@@ -154,7 +157,7 @@ def moveD():
     future = publisher.publish(topic_path, data=data)
     print(future.result())
     print('Published messages.')
-   ''' 
+'''
 @app.route("/")
 def chartsimple():
     return render_template('index.html')
