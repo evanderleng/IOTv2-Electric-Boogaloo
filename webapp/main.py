@@ -87,7 +87,7 @@ def apidata_getdata():
     global conn
     if request.method == 'POST':
         try:
-            sql="SELECT * FROM person ORDER BY datetime_value DESC LIMIT 10"
+            sql="SELECT * FROM light ORDER BY datetime_value DESC LIMIT 10"
             cur = cnx.cursor()
             json_data = fetch_fromdb_as_json(cnx,cur,sql)
             loaded_r = json.loads(json_data)
