@@ -95,14 +95,16 @@ app = Flask(__name__)
 def apidata_getdata():
     if request.method == 'POST':
         try:
+            CLOUDSQL_CONNECTION_NAME = 'gungnir-249212:us-central1:iotsql'
+            CLOUDSQL_USER = 'root'
+            CLOUDSQL_PASSWORD = '1qwer$#@!'
+            cloudsql_unix_socket = os.path.join('/cloudsql', str(CLOUDSQL_CONNECTION_NAME))
+            db = 'testdatabase'
+            cnx = mysql.connector.connect(user=CLOUDSQL_USER, password=CLOUDSQL_PASSWORD, unix_socket=cloudsql_unix_socket, database=db)
+            print('Connected to Google Cloud SQL (Unix Socket)')
 
-            host='gungnir-249212:us-central1:iotsql'; user='root'; password='1qwer$#@!'; database='testdatabase';
-
-            sql="SELECT * FROM person ORDER BY datetime_value DESC LIMIT 10"
-            
-            cnx = mysql.connector.connect(user=user,password=password,host=host,database=database) 
             cursor = cnx.cursor()
-				
+            sql="SELECT * FROM person ORDER BY datetime_value DESC LIMIT 10"
             #cnx,cursor = connect_to_mysql(host,user,password,database)
             json_data = fetch_fromdb_as_json(cnx,cursor,sql)
             loaded_r = json.loads(json_data)
