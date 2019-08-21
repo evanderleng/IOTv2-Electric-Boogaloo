@@ -16,6 +16,7 @@ void loop(){
     Serial.print("loops ");
     int i = Serial.parseInt();
     Serial.println(i);
+    delay(10);
     switch (i){
       case 1:
         base.write(base.read()+1);
@@ -24,10 +25,10 @@ void loop(){
         base.write(base.read()-1);
         break;
       case 3: 
-        base.write(plane.read()+1);
+        plane.write(plane.read()+1);
         break;
       case 4: 
-        base.write(plane.read()-1);
+        plane.write(plane.read()-1);
         break;
     }
     

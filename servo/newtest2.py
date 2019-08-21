@@ -25,16 +25,16 @@ while True:
     char = getch()
  
     if (char == "w"):
-        s1.write('3\r')
+        print("w")
  
     if (char == "s"):
-        s1.write('4\r')
+        print("s")
 
     if (char == "a"):
-        s1.write('1\r')
+        print("a")
  
     if (char == "d"):
-        s1.write('2\r')
+        print("d")
 
     if (char == "p"):
         break
