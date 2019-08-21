@@ -1,5 +1,6 @@
 from flask import Flask, render_template, jsonify, request,Response
 
+from google.cloud import pubsub_v1
 import mysql.connector
 import sys
 
@@ -52,6 +53,7 @@ def data_to_json(data):
 
 def connect_to_mysql(host,user,password,database):
     try:
+        evanders_webapp_branch
         cnx = mysql.connector.connect(host=host,user=user,password=password,database=database)
 
         cursor = cnx.cursor()
@@ -66,7 +68,6 @@ def connect_to_mysql(host,user,password,database):
         return None
 
 def fetch_fromdb_as_json(cnx,cursor,sql):
-    
     try:
         cursor.execute(sql)
         row_headers=[x[0] for x in cursor.description] 
@@ -94,9 +95,17 @@ app = Flask(__name__)
 def apidata_getdata():
     if request.method == 'POST':
         try:
-            host='gungnir-249212:us-central1:iotsql'; user='root'; password='1qwer$#@!'; database='testdatabase';
+            CLOUDSQL_CONNECTION_NAME = 'gungnir-249212:us-central1:iotsql'
+            CLOUDSQL_USER = 'root'
+            CLOUDSQL_PASSWORD = '1qwer$#@!'
+            cloudsql_unix_socket = os.path.join('/cloudsql', str(CLOUDSQL_CONNECTION_NAME))
+            db = 'testdatabase'
+            cnx = mysql.connector.connect(user=CLOUDSQL_USER, password=CLOUDSQL_PASSWORD, unix_socket=cloudsql_unix_socket, database=db)
+            print('Connected to Google Cloud SQL (Unix Socket)')
+
+            cursor = cnx.cursor()
             sql="SELECT * FROM person ORDER BY datetime_value DESC LIMIT 10"
-            cnx,cursor = connect_to_mysql(host,user,password,database)
+            #cnx,cursor = connect_to_mysql(host,user,password,database)
             json_data = fetch_fromdb_as_json(cnx,cursor,sql)
             loaded_r = json.loads(json_data)
             data = {'chart_data': loaded_r, 'title': "IOT Data"}
@@ -105,22 +114,52 @@ def apidata_getdata():
             print(sys.exc_info()[0])
             print(sys.exc_info()[1])
 
+'''
+@app.route("/moveL")
+def moveL():
+    publisher = pubsub_v1.PublisherClient()
+    topic_path = publisher.topic_path("gungnir-249212", "move")
+    print(topic_path)
+    data = u'left'
+    data = data.encode('utf-8')
+    future = publisher.publish(topic_path, data=data)
+    print(future.result())
+    print('Published messages.')
 
-'''@app.route("/toggle")
-def writePin():
-	if led.is_lit:
-		response = ledOff()
-	else:
-		response = ledOn()
+@app.route("/moveR")
+def moveR():
+    publisher = pubsub_v1.PublisherClient()
+    topic_path = publisher.topic_path("gungnir-249212", "move")
+    print(topic_path)
+    data = u'right'
+    data = data.encode('utf-8')
+    future = publisher.publish(topic_path, data=data)
+    print(future.result())
+    print('Published messages.')
 
-	templateData = {
-		'title' : 'Status of LED',
-		'response' : response
-	}
+@app.route("/moveU")
+def moveU():
+    publisher = pubsub_v1.PublisherClient()
+    topic_path = publisher.topic_path("gungnir-249212", "move")
+    print(topic_path)
+    data = u'up'
+    data = data.encode('utf-8')
+    future = publisher.publish(topic_path, data=data)
+    print(future.result())
+    print('Published messages.')
 
-	return render_template('pin.html', **templateData)'''
 
-
+@app.route("/moveD")
+def moveD():
+    publisher = pubsub_v1.PublisherClient()
+    topic_path = publisher.topic_path("gungnir-249212", "move")
+    print(topic_path)
+    data = u'down'
+    data = data.encode('utf-8')
+    future = publisher.publish(topic_path, data=data)
+    print(future.result())
+    print('Published messages.')
+'''
 @app.route("/")
 def chartsimple():
     return render_template('index.html')
@@ -128,10 +167,7 @@ def chartsimple():
 
 if __name__ == '__main__':
    try:
-        print('Server waiting for requests')
-        http_server = WSGIServer(('0.0.0.0', 8001), app)
-        app.debug = True
-        http_server.serve_forever()
+        app.run(host='127.0.0.1', port=8080, debug=True)
    except:
         print("Exception")
         import sys
