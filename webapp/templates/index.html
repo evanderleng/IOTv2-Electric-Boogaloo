@@ -192,7 +192,7 @@
                 datetime = newdata[i].datetime_value;
                 jsdatetime = new Date(Date.parse(datetime));
                 jstime = jsdatetime.toLocaleTimeString();
-                light = newdata[i].light;
+                light = newdata[i].brightness;
                 graphdata.addRows([[jstime,light]]);
             }//end for
             return graphdata
