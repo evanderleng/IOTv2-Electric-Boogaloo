@@ -1,12 +1,9 @@
 Python Gungnir
 ==================================
 
-
-[![Build Status]()]
-[![Windows Build Status]()]
-
 ## Code style
 Standard Python code
+
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
 # Overview of project
 
@@ -79,6 +76,10 @@ export PROJECT_ID=<project-id> GOOGLE_APPLICATION_CREDENTIALS=</path/to/creds.js
 - 1x Speaker
 - 1x AUX Cable
 - 1x Portable Charger
+
+## Final RPI Setup
+![Image of Setup](https://octodex.github.com/images/yaktocat.png)
+
 
 ## Billing
 To re-enable billing on a project:
