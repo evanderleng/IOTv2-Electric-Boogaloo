@@ -114,17 +114,20 @@ gsutil mb gs://[YOUR_BUCKET_NAME]
 ```
 
 ## Architecture
+
 The System architecture of the image recognition.
 
-![Image of Fritzing2](https://github.com/evanderleng/IOTv2-Electric-Boogaloo/blob/master/Images/4.png)
+![Image of Imagerecog](https://github.com/evanderleng/IOTv2-Electric-Boogaloo/blob/master/Images/4.png)
 
 The System architecture of the pubsub mqtt data and the app engine.
-![Image of Fritzing2](https://github.com/evanderleng/IOTv2-Electric-Boogaloo/blob/master/Images/7.png)
+![Image of AppEngine](https://github.com/evanderleng/IOTv2-Electric-Boogaloo/blob/master/Images/7.png)
 
 ## Web View
 The following images are screenshots of how the web application should look if setup was done correctly. All the screenshots are of index.html.
-![Image of Fritzing2](https://github.com/evanderleng/IOTv2-Electric-Boogaloo/blob/master/Images/5.png)
+![Image of WebView](https://github.com/evanderleng/IOTv2-Electric-Boogaloo/blob/master/Images/5.png)
 
+## Expected outcome
+To test if the program works, run main.py as well as dataup.py. If everything is configured correctly and everything is set up properly. It should work
 
 ## Authors
 
