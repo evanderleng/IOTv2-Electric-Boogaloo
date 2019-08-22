@@ -84,6 +84,11 @@ export PROJECT_ID=<project-id> GOOGLE_APPLICATION_CREDENTIALS=</path/to/creds.js
 
 # Fritzing of LDR
 
+Add the LDR to the breadboard as shown
+
+1. One end of the LDR should be connected to Pin 1 of the MCP3008 ADC and the 10k ohms resistor
+2. The other end of the LDR should be connected to GND
+
 ![Image of Fritzing1](https://github.com/evanderleng/IOTv2-Electric-Boogaloo/blob/master/Images/2.png)
 
 # Fritzing of Servos
