@@ -1,6 +1,35 @@
+Python Gungnir
+==================================
+
+|alpha| |pypi| |versions| 
+
 # Overview of project
 
 Our project, takes images using the camera every predefined seconds, feeds it into a cloud bucket and performs image recognition on it. It has been preconfigured to identify faces and highlight them. Currently it is performing the function of security camera, thus when it recognises a person, it will email the owner and issue a verbal warning to the visitor.It has been attached to servos to allow movement of the camera however this application is infinitely dynamic, allowing it to be used for a variety of other purposes such as as being able to be configured for Optical character recognition and other artificial intelligence purposes.
+
+
+Quick Start
+-----------
+
+In order to use this library, you first need to go through the following steps:
+
+1. `Select or create a Cloud Platform project.`_
+2. `Enable billing for your project.`_
+3. `Enable the Cloud AutoML API.`_
+4. `Setup Authentication.`_
+
+.. _Select or create a Cloud Platform project.: https://console.cloud.google.com/project
+.. _Enable billing for your project.: https://cloud.google.com/billing/docs/how-to/modify-project#enable_billing_for_a_project
+.. _Enable the Cloud AutoML API.:  https://cloud.google.com/automl
+.. _Setup Authentication.: https://googleapis.dev/python/google-api-core/latest/auth.html
+
+Supported Python Versions
+^^^^^^^^^^^^^^^^^^^^^^^^^
+Python >= 2.7
+
+Deprecated Python Versions
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+Python == 2.7. Python 2.7 support will be removed on January 1, 2020.
 
 ## Installation
 
@@ -31,6 +60,12 @@ Finally, install the pubsub libararies needed to send mqtt data
 sudo pip install google-cloud-pubsub
 ```
 
+## Authentication
+
+If you want to run all programs, you will need a billing-enabled GCP project, and a service account with access to the APIs.
+```bash
+export PROJECT_ID=<project-id> GOOGLE_APPLICATION_CREDENTIALS=</path/to/creds.json>
+```
 ## Hardware
 - 1x Raspberry pi
 - 1x Raspberry pi camera
@@ -42,6 +77,11 @@ sudo pip install google-cloud-pubsub
 - 1x Speaker
 - 1x AUX Cable
 - 1x Portable Charger
+
+## Authors
+
+* **Davis Zheng** - *Initial work* - [Nonsour/Nonsouris](https://github.com/nonsour)
+
 
 ## Acknowledgments
 
