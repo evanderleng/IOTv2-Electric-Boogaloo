@@ -93,6 +93,8 @@ Add the LDR to the breadboard as shown
 
 # Fritzing of Servos
 
+Follow the wiring display down below to properly connect the servos to the arduino
+
 ![Image of Fritzing2](https://github.com/evanderleng/IOTv2-Electric-Boogaloo/blob/master/Images/3.png)
 
 
