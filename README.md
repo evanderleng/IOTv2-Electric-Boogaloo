@@ -25,9 +25,11 @@ In order to run this project, you first need to go through the following steps:
 7. `Run the dataup.py`
 
 ##Supported Python Versions
+
 Python >= 2.7
 
 #Deprecated Python Versions
+
 Python == 2.7. Python 2.7 support will be removed on January 1, 2020.
 
 ## Installation
@@ -78,7 +80,13 @@ export PROJECT_ID=<project-id> GOOGLE_APPLICATION_CREDENTIALS=</path/to/creds.js
 - 1x Portable Charger
 
 ## Final RPI Setup
-![Image of Setup](https://octodex.github.com/images/yaktocat.png)
+![Image of Setup](https://github.com/evanderleng/IOTv2-Electric-Boogaloo/blob/master/Images/1.png)
+
+#Fritzing 
+![Image of Fritzing1](https://github.com/evanderleng/IOTv2-Electric-Boogaloo/blob/master/Images/2.png)
+
+#Fritzing 
+![Image of Fritzing2](https://github.com/evanderleng/IOTv2-Electric-Boogaloo/blob/master/Images/3.png)
 
 
 ## Billing
