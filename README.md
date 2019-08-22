@@ -20,10 +20,12 @@ In order to run this project, you first need to go through the following steps:
 
 1. `Select or create a Cloud Platform project.`
 2. `Enable billing for your project.`
+3. `Set up the RPI as per the image shown below`
 3. `Git clone the repository.`
 4. `Cd into IOT/IOTv2-Electric-Boogaloo/mqtt.`
 5. `Run the authentication`
-
+6. `Run the main.py file`
+7. `Run the dataup.py`
 
 ##Supported Python Versions
 Python >= 2.7
@@ -86,6 +88,12 @@ To re-enable billing on a project:
 1. Open the console navigation menu (menu) and select Billing.
 1. Click Link a billing account.
 1. Select a billing account, then click SET ACCOUNT.
+
+## Storage
+In your terminal window, create a Cloud Storage bucket, where [YOUR_BUCKET_NAME] represents the name of your bucket:
+```bash
+gsutil mb gs://[YOUR_BUCKET_NAME]
+```
 
 ## Authors
 
