@@ -82,10 +82,12 @@ export PROJECT_ID=<project-id> GOOGLE_APPLICATION_CREDENTIALS=</path/to/creds.js
 ## Final RPI Setup
 ![Image of Setup](https://github.com/evanderleng/IOTv2-Electric-Boogaloo/blob/master/Images/1.png)
 
-#Fritzing 
+#Fritzing of LDR
+
 ![Image of Fritzing1](https://github.com/evanderleng/IOTv2-Electric-Boogaloo/blob/master/Images/2.png)
 
-#Fritzing 
+#Fritzing of Servos
+
 ![Image of Fritzing2](https://github.com/evanderleng/IOTv2-Electric-Boogaloo/blob/master/Images/3.png)
 
 
