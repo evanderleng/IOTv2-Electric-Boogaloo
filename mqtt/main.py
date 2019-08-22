@@ -93,7 +93,6 @@ def faces(input_filename, output_filename, max_results):
 		emailalert()
 		warning(randrange(2))
 		upload_blob("images1703221",full_path_post,"visitor")
-		raise SystemExit
 
 def upload_blob(bucket_name, source_file_name, destination_blob_name):
     """Uploads a file to the bucket."""

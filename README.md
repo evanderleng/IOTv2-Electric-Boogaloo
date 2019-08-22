@@ -37,6 +37,16 @@ sudo pip install google-cloud-pubsub
 - 1x Breadboard
 - 2x SG90 servo
 - 2x AA battery packs
+- 1x Light-Dependant Resistor
+- 1x Light-emitting diode
+- 1x Speaker
+- 1x AUX Cable
+- 1x Portable Charger
+
+## Acknowledgments
+
+* Thanks to Ms Dora Chua for her guidance
+
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
