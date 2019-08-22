@@ -113,6 +113,18 @@ In your terminal window, create a Cloud Storage bucket, where [YOUR_BUCKET_NAME]
 gsutil mb gs://[YOUR_BUCKET_NAME]
 ```
 
+## Architecture
+The System architecture of the image recognition.
+![Image of Fritzing2](https://github.com/evanderleng/IOTv2-Electric-Boogaloo/blob/master/Images/4.png)
+
+The System architecture of the pubsub mqtt data and the app engine.
+![Image of Fritzing2](https://github.com/evanderleng/IOTv2-Electric-Boogaloo/blob/master/Images/7.png)
+
+## Web View
+The following images are screenshots of how the web application should look if setup was done correctly. All the screenshots are of index.html.
+![Image of Fritzing2](https://github.com/evanderleng/IOTv2-Electric-Boogaloo/blob/master/Images/5.png)
+
+
 ## Authors
 
 * **Davis Zheng** - [Nonsour](https://github.com/nonsour)/[Nonsouris](https://github.com/nonsouris)
